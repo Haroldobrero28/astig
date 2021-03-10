@@ -1,31 +1,33 @@
 <template>
-  <div class="app">
-    <Head />
-    <Register />
+  <div id="app">
+    <div>
+      <Head />
 
+      
+    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Head from './components/Head'
-import Register from './components/Register'
+import Head from './views/layout/Head'
 
 export default {
   name: 'App',
   components: {
-    Head,
-    Register
+    Head
   }
-
+  
 }
 </script>
 
 <style>
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.form-container{
+  
+  max-width: 70%;
 }
-
+input{
+    margin: 5px 0px;
+}
 
 </style>
