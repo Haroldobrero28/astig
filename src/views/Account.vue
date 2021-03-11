@@ -6,7 +6,10 @@
 
 <script>
 export default {
-    name: 'Account'
+    name: 'Account',
+    method : {
+        
+    }
 }
 </script>
 
