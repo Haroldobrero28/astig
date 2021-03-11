@@ -1,19 +1,23 @@
 <template>
 <div>
-    <Head />
-    <div class="register">
-        <div class="mx-auto form-container">
-                <form action="" class="">
-                <h2>Register</h2>
-                <p>Create your account</p>
-                <input type="text" class="form-control" name="idnumber" id="" placeholder="Your ID Number">
+  <div>
+    <div class="container">
+    <div class="row justify-content-center">
+    <div class="form-container">
+      <Head />
+      <h2>Register</h2>
+      <p>Create your account</p>
+      <form >
+        <input type="text" class="form-control" name="idnumber" id="" placeholder="Your ID Number">
                 <input type="text" class="form-control" name="password" id="" placeholder="Your Password">
                 <input type="text" class="form-control" name="r-password" id="" placeholder="Repeat Password">
                 <input type="submit" @click.prevent="toUserInformation()" class="btn btn-outline-primary col-xl-12" id="next" value="Proceed">
                 <p> Already have an account? <a href="/login"> Login</a></p>
-            </form>
-        </div>
+      </form>
     </div>
+    </div>
+    </div>
+  </div>
 </div>
 </template>
 

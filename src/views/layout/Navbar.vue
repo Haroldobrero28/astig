@@ -1,7 +1,6 @@
 <template>
   <div>
-    <section class="section_1 container-fluid p-0">
-      <div class="d-flex flex-column">
+    <section class="section_1 container-fluid fixed-top p-0">
         <header>
           <div>
             <b-navbar toggleable="lg" type="dark" variant="info">
@@ -21,7 +20,7 @@
                     <template #button-content>
                       <em>User</em>
                     </template>
-                    <b-dropdown-item href="#">Profile</b-dropdown-item>
+                    <b-dropdown-item href="/EditAccount">Edit Account</b-dropdown-item>
                     <b-dropdown-item href="#">Sign Out</b-dropdown-item>
                   </b-nav-item-dropdown>
                 </b-navbar-nav>
@@ -29,7 +28,6 @@
             </b-navbar>
           </div>
         </header>
-      </div>
     </section>
   </div>
 </template>

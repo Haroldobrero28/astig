@@ -7,7 +7,7 @@ import Account from '../views/Account.vue'
 import UserInformation from '../views/UserInformation.vue'
 import PasswordReset from '../views/PasswordReset.vue'
 import DataEntry from '../views/DataEntry.vue'
-
+import EditAccount from '../views/EditAccount.vue'
 
 Vue.use(VueRouter)
 
@@ -52,6 +52,12 @@ const routes = [
     path: '/dataentry',
     name: 'DataEntry',
     component: DataEntry
+  },
+
+  {
+    path: '/editaccount',
+    name: 'EditAccount',
+    component: EditAccount
   }
 
 ]

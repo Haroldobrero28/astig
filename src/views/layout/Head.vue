@@ -1,7 +1,10 @@
 <template>
-    <div>
-        <div class="bg-image mx-auto">
-            <img class="mx-auto d-block psa-logo-ontop" src="..\..\assets\psa_logo.png" alt="psa-logo">
+    <div class="container mt-5">
+            <div class="row">
+                <div class="mx-auto ">
+                    <img class="img-fluid mx-auto d-block col-5 col-md-5" src="..\..\assets\psa_logo.png" alt="psa-logo">
+                </div>
+            
         </div>
     </div>
 </template>
@@ -11,3 +14,8 @@ export default {
     name: 'Head',
 }
 </script>
+
+<style scoped>
+
+
+</style>

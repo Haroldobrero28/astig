@@ -2,6 +2,7 @@
     <div>
         <Navbar />
         <h2>Data Entry</h2>
+        
     </div>
 </template>
 
