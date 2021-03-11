@@ -23,7 +23,7 @@
             />
             <input
               type="submit"
-              @click.prevent="toDataEntry()"
+              @click.prevent="toFileUpload()"
               class="btn btn-outline-primary col-xl-12"
               value="Login"
             />
@@ -51,8 +51,8 @@ export default {
     toRegister() {
       this.$router.push("/register");
     },
-    toDataEntry() {
-      this.$router.push({ path: "DataEntry" });
+    toFileUpload() {
+      this.$router.push({ path: "FileUpload" });
     },
   },
   components: {

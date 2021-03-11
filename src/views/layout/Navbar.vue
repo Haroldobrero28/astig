@@ -3,7 +3,7 @@
     <section class="section_1 container-fluid fixed-top p-0">
       <header>
         <div>
-          <b-navbar toggleable="lg" type="dark" variant="info">
+          <b-navbar class="navbar-custom" toggleable="light" type="dark">
             <b-navbar-brand>ASTIG</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -23,7 +23,7 @@
                   <b-dropdown-item href="/EditAccount"
                     >Edit Account</b-dropdown-item
                   >
-                  <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+                  <b-dropdown-item href="/login">Sign Out</b-dropdown-item>
                 </b-nav-item-dropdown>
               </b-navbar-nav>
             </b-collapse>
@@ -39,3 +39,10 @@ export default {
   name: "Navbar",
 };
 </script>
+
+<style scoped>
+.navbar-custom {
+  background-color: #2692FD;
+}
+
+</style>>
