@@ -3,7 +3,7 @@
     <section class="section_1 container-fluid fixed-top p-0">
       <header>
         <div>
-          <b-navbar class="navbar-custom" toggleable="light" type="dark">
+          <b-navbar class="navbar-custom" toggleable="lg" type="dark">
             <b-navbar-brand>ASTIG</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

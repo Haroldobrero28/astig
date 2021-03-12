@@ -7,7 +7,7 @@
           <h2>Create Account</h2>
           <p>Fill up user details</p>
           <form>
-            <div action="" class="user-information">
+            
               <input
                 type="text"
                 class="form-control"
@@ -29,42 +29,54 @@
                 id=""
                 placeholder="Last Name"
               />
-              <input
-                type="text"
-                class="form-control"
-                name="r-password"
-                id=""
-                placeholder="Prefix"
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="r-password"
-                id=""
-                placeholder="Suffix"
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="r-password"
-                id=""
-                placeholder="Office"
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="r-password"
-                id=""
-                placeholder="Service"
-              />
-              <input
-                type="text"
-                class="form-control"
-                name="r-password"
-                id=""
-                placeholder="Division"
-              />
-            </div>
+              <div class="d-inline-flex col-sm 1 p-0">
+                <div class="form-group flex-fill m-0 pr-1">
+                  <select class="form-control" id="route">
+                    <option value="NA">Name Prefix</option>
+                    <option>Mr</option>
+                    <option>Mrs</option>
+                    <option>Msgt</option>
+                    <option>Ms</option>
+                  </select>
+                </div>
+                <div class="form-group flex-fill m-0 pl-1">
+                  <select class="form-control" id="route">
+                    <option value="NA">Name Suffix</option>
+                    <option>Sr</option>
+                    <option>Jr</option>
+                    <option>Phd</option>
+                    <option>OBE</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group my-1">
+                <select class="form-control" id="route">
+                  <option value="NA">Office</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+              <div class="form-group my-1">
+                <select class="form-control" id="route">
+                  <option value="NA">Service</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+              <div class="form-group my-1">
+                <select class="form-control" id="route">
+                  <option value="NA">division</option>
+                  <option>SDD</option>
+                  <option>SOED</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </div>
+            
             <input
               type="submit"
               @click.prevent="proceedQuery()"
@@ -106,8 +118,8 @@ export default {
 </script>
 
 <style scoped>
-.user-information {
-  height: 200px;
-  overflow: scroll;
-}</style
->>
+  .container {
+    height: 200px;
+  }
+</style>
+
