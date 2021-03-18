@@ -1,23 +1,64 @@
 <template>
-  <div class="home">
-    <div class="mx-auto form-container">
-      <form >
-        <input type="text" class="form-control" name="idnumber" id="" placeholder="Your ID Number">
-        <input type="text" class="form-control" name="password" id="" placeholder="Your Password">
-        <input type="submit" class="btn btn-outline-primary col-xl-12" id="next" value="LOGIN">
-        <p> Don't have an account? <a href="/register"> Create Account</a></p>
-      </form>
+  <div>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="form-container">
+          <Head />
+          <h2>Login</h2>
+          <p>Sign in to your account</p>
+          <form>
+            <input
+              type="text"
+              class="form-control"
+              name="idnumber"
+              id=""
+              placeholder="Your ID Number"
+            />
+            <input
+              type="text"
+              class="form-control"
+              name="password"
+              id=""
+              placeholder="Your Password"
+            />
+            <input
+              type="submit"
+              @click.prevent="toFileUpload()"
+              class="btn btn-outline-primary col-xl-12"
+              value="Login"
+            />
+            <p><a href="/passwordreset"> Forgot Password </a></p>
+            <input
+              type="button"
+              @click.prevent="toRegister()"
+              class="btn btn-outline-secondary col-xl-12"
+              value="Register New Account"
+            />
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-
+import Head from "./layout/Head";
 
 export default {
-  name: 'Home',
+  name: "Login",
+
   methods: {
-  }
-}
+    toRegister() {
+      this.$router.push("/register");
+    },
+    toFileUpload() {
+      this.$router.push({ path: "FileUpload" });
+    },
+  },
+  components: {
+    Head,
+  },
+};
 </script>
+
+<style scoped></style>
