@@ -1,35 +1,35 @@
 <template>
   <div>
-    <section class="section_1 container-fluid p-0">
-      <div class="d-flex flex-column">
-        <header>
-          <div>
-            <b-navbar toggleable="lg" type="dark" variant="info">
-              <b-navbar-brand>ASTIG</b-navbar-brand>
+    <section class="section_1 container-fluid fixed-top p-0">
+      <header>
+        <div>
+          <b-navbar class="navbar-custom" toggleable="lg" type="dark">
+            <b-navbar-brand>ASTIG</b-navbar-brand>
 
-              <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
-              <b-collapse id="nav-collapse" is-nav>
-                <!-- Right aligned nav items -->
-                <b-navbar-nav class="ml-auto">
-                  <b-navbar-nav>
-                    <b-nav-item href="/dataentry">Data Entry</b-nav-item>
-                    <b-nav-item href="/fileupload">File Upload</b-nav-item>
-                  </b-navbar-nav>
-                  <b-nav-item-dropdown right>
-                    <!-- Using 'button-content' slot -->
-                    <template #button-content>
-                      <em>User</em>
-                    </template>
-                    <b-dropdown-item href="#">Profile</b-dropdown-item>
-                    <b-dropdown-item href="#">Sign Out</b-dropdown-item>
-                  </b-nav-item-dropdown>
+            <b-collapse id="nav-collapse" is-nav>
+              <!-- Right aligned nav items -->
+              <b-navbar-nav class="ml-auto">
+                <b-navbar-nav>
+                  <b-nav-item href="/dataentry">Data Entry</b-nav-item>
+                  <b-nav-item href="/fileupload">File Upload</b-nav-item>
                 </b-navbar-nav>
-              </b-collapse>
-            </b-navbar>
-          </div>
-        </header>
-      </div>
+                <b-nav-item-dropdown right>
+                  <!-- Using 'button-content' slot -->
+                  <template #button-content>
+                    <em>User</em>
+                  </template>
+                  <b-dropdown-item href="/EditAccount"
+                    >Edit Account</b-dropdown-item
+                  >
+                  <b-dropdown-item href="/login">Sign Out</b-dropdown-item>
+                </b-nav-item-dropdown>
+              </b-navbar-nav>
+            </b-collapse>
+          </b-navbar>
+        </div>
+      </header>
     </section>
   </div>
 </template>
@@ -39,3 +39,10 @@ export default {
   name: "Navbar",
 };
 </script>
+
+<style scoped>
+.navbar-custom {
+  background-color: #2692FD;
+}
+
+</style>>
