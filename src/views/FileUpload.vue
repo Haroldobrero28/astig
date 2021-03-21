@@ -4,9 +4,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="form col-8">
-                <div>
                     <b-form-file id="file-large" size="lg"></b-form-file>
-                </div>
                 </div>
             </div>
         </div>

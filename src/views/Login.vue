@@ -28,12 +28,6 @@
               value="Login"
             />
             <p><a href="/passwordreset"> Forgot Password </a></p>
-            <input
-              type="button"
-              @click.prevent="toRegister()"
-              class="btn btn-outline-secondary col-xl-12"
-              value="Register New Account"
-            />
           </form>
         </div>
       </div>

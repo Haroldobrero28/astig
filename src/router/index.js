@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
+//import Register from '../views/Register.vue'
 import FileUpload from '../views/FileUpload.vue'
 import UserInformation from '../views/UserInformation.vue'
 import PasswordReset from '../views/PasswordReset.vue'
 import DataEntry from '../views/DataEntry.vue'
 import EditAccount from '../views/EditAccount.vue'
 import SegmentR from '../views/SegmentR.vue'
+
+import Signup from '../views/Signup'
 
 Vue.use(VueRouter)
 
@@ -18,11 +20,11 @@ const routes = [
     component: Login
   },
 
-  {
+  /* {
     path: '/register',
     name: 'Register',
     component: Register
-  },
+  }, */
 
   {
     path: '/fileupload',
@@ -58,6 +60,12 @@ const routes = [
     path: '/segmentr',
     name: 'SegmentR',
     component: SegmentR
+  },
+
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: Signup
   }
 
 ]

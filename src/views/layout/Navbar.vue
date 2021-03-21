@@ -12,8 +12,9 @@
               <!-- Right aligned nav items -->
               <b-navbar-nav class="ml-auto">
                 <b-navbar-nav>
-                  <b-nav-item href="/dataentry">Data Entry</b-nav-item>
-                  <b-nav-item href="/fileupload">File Upload</b-nav-item>
+                  <b-nav-item href="/fileupload">File upload</b-nav-item>
+                  <b-nav-item href="/dataentry">Data entry</b-nav-item>
+                  <b-nav-item href="/signup">Register account</b-nav-item>
                 </b-navbar-nav>
                 <b-nav-item-dropdown right>
                   <!-- Using 'button-content' slot -->
