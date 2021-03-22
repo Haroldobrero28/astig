@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
+import Signin from '../views/Signin.vue'
 //import Register from '../views/Register.vue'
 import FileUpload from '../views/FileUpload.vue'
 import UserInformation from '../views/UserInformation.vue'
@@ -15,9 +15,9 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
+    path: '/signin',
+    name: 'Signin',
+    component: Signin
   },
 
   /* {

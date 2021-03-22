@@ -3,8 +3,8 @@
     <section class="section_1 container-fluid fixed-top p-0">
       <header>
         <div>
-          <b-navbar class="navbar-custom" toggleable="lg" type="dark">
-            <b-navbar-brand>ASTIG</b-navbar-brand>
+          <b-navbar class="navbar-custom" toggleable="lg" type="dark" variant="primary">
+            <b-navbar-brand href="/dataentry">Augmented System for Travel Information</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -12,8 +12,8 @@
               <!-- Right aligned nav items -->
               <b-navbar-nav class="ml-auto">
                 <b-navbar-nav>
-                  <b-nav-item href="/fileupload">File upload</b-nav-item>
                   <b-nav-item href="/dataentry">Data entry</b-nav-item>
+                  <b-nav-item href="/fileupload">File upload</b-nav-item>
                   <b-nav-item href="/signup">Register account</b-nav-item>
                 </b-navbar-nav>
                 <b-nav-item-dropdown right>
@@ -24,7 +24,7 @@
                   <b-dropdown-item href="/EditAccount"
                     >Edit Account</b-dropdown-item
                   >
-                  <b-dropdown-item href="/login">Sign Out</b-dropdown-item>
+                  <b-dropdown-item href="/signin">Sign Out</b-dropdown-item>
                 </b-nav-item-dropdown>
               </b-navbar-nav>
             </b-collapse>
@@ -45,5 +45,6 @@ export default {
 .navbar-custom {
   background-color: #2692FD;
 }
+
 
 </style>>
