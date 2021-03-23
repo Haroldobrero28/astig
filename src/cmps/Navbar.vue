@@ -1,31 +1,35 @@
 <template>
   <div>
+    <div v-if="!loggedIn"></div>
+            <div v-else> 
     <section class="section_1 container-fluid fixed-top p-0">
       <header>
         <div>
         
           <b-navbar class="navbar-custom" toggleable="lg" type="dark" variant="primary">
-            <b-navbar-brand href="/dataentry">Augmented System for Travel Information</b-navbar-brand>
-
+            <router-link class="navbar-brand" :to="(loggedIn ? '/' : '/signin')">{{brand}}</router-link>
+      
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
+             
             <b-collapse id="nav-collapse" is-nav>
               <!-- Right aligned nav items -->
-              <b-navbar-nav >
-                
-              </b-navbar-nav>
+
               <b-navbar-nav class="ml-auto">
                 <b-navbar-nav>
-                  <b-nav-item href="/dataentry">Data entry</b-nav-item>
-                  <b-nav-item href="/fileupload">File upload</b-nav-item>
-                  <b-nav-item href="/signup">Register account</b-nav-item>
+                  <b-nav-item to="/dataentry">Data Entry</b-nav-item>
+                  <b-nav-item to="/fileupload">File Upload</b-nav-item>
+                  <b-nav-item to="/signup">Register Account</b-nav-item>
+                  <!-- <MenuLink path="/dataentry" text="Data Entry"> </MenuLink>
+                  <MenuLink path="/fileupload" text="File Upload"> </MenuLink>
+                  <MenuLink path="/signup" text="Register Account"> </MenuLink> -->
+                  
                 </b-navbar-nav>
                 <b-nav-item-dropdown right>
                   <!-- Using 'button-content' slot -->
                   <template #button-content>
                     <em>User</em>
                   </template>
-                  <b-dropdown-item href="/EditAccount"
+                  <b-dropdown-item to="/editaccount"
                     >Edit Account</b-dropdown-item
                   >
                   <b-dropdown-item href="#" @click.prevent="logout">Sign Out</b-dropdown-item>
@@ -37,16 +41,26 @@
       </header>
     </section>
   </div>
+  </div>
 </template>
 
 <script>
+/* import MenuLink from './MenuLink' */
 export default {
   props: ['loggedIn'],
+  data() {
+    return {
+      brand: process.env.VUE_APP_APPNAME
+    };
+  },
 
   methods: {
     logout() {
       this.$store.dispatch("logout")
     }
+  },
+  components: {
+   /*  MenuLink */
   }
 
 

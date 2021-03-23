@@ -15,12 +15,6 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    redirect: {
-      name:'Signin'
-    }
-  },
-  {
     path: '/signin',
     name: 'Signin',
     component: Signin
@@ -45,7 +39,7 @@ const routes = [
   },
 
   {
-    path: '/dataEntry',
+    path: '/',
     name: 'Home',
     component: DataEntry
   },

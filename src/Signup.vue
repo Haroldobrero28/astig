@@ -291,6 +291,7 @@ export default {
         this.service= "";
         this.division= "";
         this.password= "";
+        this.password_confirm="";
       })
       .catch(err => {
         this.msg = err.response.data.messages.error;

@@ -1,8 +1,6 @@
 <template>
   <div class="row">
-    <div
-      class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white from-wrapper"
-    >
+    <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 mt-5 pt-3 pb-3 bg-white from-wrapper">
       <div class="container">
         <h3>Signin</h3>
         <hr />
@@ -73,8 +71,9 @@ export default {
       this.$guest
       .post("/login", form, {auth})
       .then(res => {
-        /* this.msg = "You have succesfully logged in";
-        this.classAlert = "success" */
+
+        this.msg = "You have succesfully logged in";
+        this.classAlert = "success"
         this.username="";
         this.password="";
         
