@@ -1,17 +1,20 @@
 <template>
   <div id="app">
-    <Navbar />
-    <div></div>
+    <div id="navigationbar"><Navbar></Navbar></div>
+    
     <router-view />
   </div>
 </template>
 
 <script>
-import Navbar from './views/layout/Navbar'
+import Navbar from './cmps/Navbar'
 export default {
   name: "App",
   components:{
         Navbar
+    },
+
+    methods:{
     }
   
 };

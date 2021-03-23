@@ -1,30 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Signin from '../views/Signin.vue'
-//import Register from '../views/Register.vue'
-import FileUpload from '../views/FileUpload.vue'
-import UserInformation from '../views/UserInformation.vue'
-import PasswordReset from '../views/PasswordReset.vue'
-import DataEntry from '../views/DataEntry.vue'
-import EditAccount from '../views/EditAccount.vue'
-import SegmentR from '../views/SegmentR.vue'
+import Signin from '../Signin.vue'
+import FileUpload from '../FileUpload.vue'
+import UserInformation from '../UserInformation.vue'
+import PasswordReset from '../PasswordReset.vue'
+import DataEntry from '../DataEntry.vue'
+import EditAccount from '../EditAccount.vue'
+import SegmentR from '../SegmentR.vue'
+import TryPage from '../TryPage.vue'
 
-import Signup from '../views/Signup'
+import Signup from '../Signup'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
+    path: '/',
+    redirect: {
+      name:'Signin'
+    }
+  },
+  {
     path: '/signin',
     name: 'Signin',
     component: Signin
   },
-
-  /* {
-    path: '/register',
-    name: 'Register',
-    component: Register
-  }, */
 
   {
     path: '/fileupload',
@@ -45,8 +45,8 @@ const routes = [
   },
 
   {
-    path: '/dataentry',
-    name: 'DataEntry',
+    path: '/dataEntry',
+    name: 'Home',
     component: DataEntry
   },
 
@@ -66,14 +66,23 @@ const routes = [
     path: '/signup',
     name: 'Signup',
     component: Signup
+  },
+  {
+    path: '/trypage',
+    name: 'TryPage',
+    component: TryPage
   }
-
+  
 ]
+
+
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
 })
+
+
 
 export default router
