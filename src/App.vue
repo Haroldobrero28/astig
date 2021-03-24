@@ -1,13 +1,42 @@
 <template>
   <div id="app">
-    <div></div>
+    <app-nav :loggedIn="loggedIn"> </app-nav>
+
     <router-view />
   </div>
 </template>
 
 <script>
+import Navbar from "./cmps/Navbar";
 export default {
+  computed: {
+    loggedIn() {
+      return this.$store.getters.loginState;
+    },
+  },
   name: "App",
+  components: {
+    appNav: Navbar,
+  },
+  created() {
+    const expires = localStorage.getItem("expires");
+    const token = localStorage.getItem("token");
+
+    if (expires && token) {
+      var expiresMs = new Date(expires);
+      var now = new Date();
+      now = now.getTime();
+      expiresMs = expiresMs.getTime;
+      if (now > expiresMs) {
+        this.$store.dispatch("logout");
+      } else {
+        this.$store.dispatch("login", expiresMs - now);
+      }
+    } else {
+      if (this.$router.currentRoute.name !== "Signin");
+      this.$router.push({ name: "Signin" });
+    }
+  },
 };
 </script>
 

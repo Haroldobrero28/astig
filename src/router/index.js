@@ -1,71 +1,77 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Login from '../views/Login.vue'
-import Register from '../views/Register.vue'
-import FileUpload from '../views/FileUpload.vue'
-import UserInformation from '../views/UserInformation.vue'
-import PasswordReset from '../views/PasswordReset.vue'
-import DataEntry from '../views/DataEntry.vue'
-import EditAccount from '../views/EditAccount.vue'
-import SegmentR from '../views/SegmentR.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Signin from "../Signin.vue";
+import FileUpload from "../FileUpload.vue";
+import UserInformation from "../UserInformation.vue";
+import PasswordReset from "../PasswordReset.vue";
+import DataEntry from "../DataEntry.vue";
+import EditAccount from "../EditAccount.vue";
+import SegmentR from "../SegmentR.vue";
+import TryPage from "../TryPage.vue";
 
-Vue.use(VueRouter)
+import Signup from "../Signup";
+
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/login',
-    name: 'Login',
-    component: Login
+    path: "/signin",
+    name: "Signin",
+    component: Signin,
   },
 
   {
-    path: '/register',
-    name: 'Register',
-    component: Register
+    path: "/fileupload",
+    name: "FileUpload",
+    component: FileUpload,
   },
 
   {
-    path: '/fileupload',
-    name: 'FileUpload',
-    component: FileUpload
+    path: "/userinformation",
+    name: "UserInformation",
+    component: UserInformation,
   },
 
   {
-    path: '/userinformation',
-    name: 'UserInformation',
-    component: UserInformation
+    path: "/passwordreset",
+    name: "PasswordReset",
+    component: PasswordReset,
   },
 
   {
-    path: '/passwordreset',
-    name: 'PasswordReset',
-    component: PasswordReset
+    path: "/",
+    name: "Home",
+    component: DataEntry,
   },
 
   {
-    path: '/dataentry',
-    name: 'DataEntry',
-    component: DataEntry
+    path: "/editaccount",
+    name: "EditAccount",
+    component: EditAccount,
   },
 
   {
-    path: '/editaccount',
-    name: 'EditAccount',
-    component: EditAccount
+    path: "/segmentr",
+    name: "SegmentR",
+    component: SegmentR,
   },
 
   {
-    path: '/segmentr',
-    name: 'SegmentR',
-    component: SegmentR
-  }
-
-]
+    path: "/signup",
+    name: "Signup",
+    component: Signup,
+  },
+  {
+    path: "/trypage",
+    name: "TryPage",
+    component: TryPage,
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
