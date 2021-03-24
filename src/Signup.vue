@@ -309,6 +309,12 @@ export default {
         });
       //axios
     },
+
+    get() {
+      this.$api.get("/blog").then((res) => {
+        this.posts = res.data;
+      });
+    },
   },
   components: {
     Alert,
