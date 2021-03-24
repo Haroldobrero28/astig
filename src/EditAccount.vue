@@ -37,52 +37,51 @@
               />
               <div class="d-inline-flex col-sm 1 p-0">
                 <div class="form-group flex-fill m-0 pr-1">
-                                <select class="form-control" id="route">
-                                    <option value="NA">Name Prefix</option>
-                                    <option>Mr</option>
-                                    <option>Mrs</option>
-                                    <option>Msgt</option>
-                                    <option>Ms</option>
-                                </select>
-                            </div>
+                  <select class="form-control" id="route">
+                    <option value="NA">Name Prefix</option>
+                    <option>Mr</option>
+                    <option>Mrs</option>
+                    <option>Msgt</option>
+                    <option>Ms</option>
+                  </select>
+                </div>
                 <div class="form-group flex-fill m-0 pl-1">
-                                <select class="form-control" id="route" >
-                                    <option value="NA">Name Suffix</option>
-                                 <option>Sr</option>
-                                <option>Jr</option>
-                                <option>Phd</option>
-                                <option>OBE</option>
-                                </select>
-                            </div>
+                  <select class="form-control" id="route">
+                    <option value="NA">Name Suffix</option>
+                    <option>Sr</option>
+                    <option>Jr</option>
+                    <option>Phd</option>
+                    <option>OBE</option>
+                  </select>
+                </div>
               </div>
               <div class="form-group my-1">
-                                <select class="form-control" id="route" >
-                                    <option value="NA">Office</option>
-                                    <option>Routes1</option>
-                                    <option>Routes2</option>
-                                    <option>Routes3</option>
-                                    <option>Routes4</option>
-                                </select>
-                            </div>
+                <select class="form-control" id="route">
+                  <option value="NA">Office</option>
+                  <option>Routes1</option>
+                  <option>Routes2</option>
+                  <option>Routes3</option>
+                  <option>Routes4</option>
+                </select>
+              </div>
               <div class="form-group my-1">
-                                <select class="form-control" id="route" >
-                                    <option value="NA">Service</option>
-                                    <option>Routes1</option>
-                                    <option>Routes2</option>
-                                    <option>Routes3</option>
-                                    <option>Routes4</option>
-                                </select>
-                            </div>
+                <select class="form-control" id="route">
+                  <option value="NA">Service</option>
+                  <option>Routes1</option>
+                  <option>Routes2</option>
+                  <option>Routes3</option>
+                  <option>Routes4</option>
+                </select>
+              </div>
               <div class="form-group my-1">
-                                <select class="form-control" id="route" >
-                                    <option value="NA">division</option>
-                                    <option>Routes1</option>
-                                    <option>Routes2</option>
-                                    <option>Routes3</option>
-                                    <option>Routes4</option>
-                                </select>
-                            </div>
-              
+                <select class="form-control" id="route">
+                  <option value="NA">division</option>
+                  <option>Routes1</option>
+                  <option>Routes2</option>
+                  <option>Routes3</option>
+                  <option>Routes4</option>
+                </select>
+              </div>
             </div>
           </b-modal>
         </div>

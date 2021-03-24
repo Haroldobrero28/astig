@@ -235,25 +235,22 @@
           </table>
         </div>
       </div>
-      </div>
     </div>
-  
+  </div>
 </template>
 
-
-	<script>
+<script>
 import Navbar from "./cmps/Navbar";
 export default {
   name: "SegmentR",
   components: {
     Navbar,
   },
-	
-}
+};
 </script>
 
 <style scoped>
 .awit {
   margin: 80px;
 }
-</style>	
+</style>
