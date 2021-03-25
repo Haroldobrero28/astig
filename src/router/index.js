@@ -21,7 +21,7 @@ const routes = [
   },
 
   {
-    path: "/fileupload",
+    path: "/fileupload", 
     name: "FileUpload",
     component: FileUpload,
   },
@@ -51,7 +51,7 @@ const routes = [
   },
 
   {
-    path: "/segmentr",
+    path: "/",
     name: "SegmentR",
     component: SegmentR,
   },

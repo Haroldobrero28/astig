@@ -1,7 +1,7 @@
 <template>
   <div>
-    <!-- <div v-if="!loggedIn"></div>
-    <div v-else> -->
+    
+    <!--<div v-if="!loggedIn"></div> <div v-else>-->
     <section class="section_1 container-fluid fixed-top p-0">
       <header>
         <div>
@@ -21,7 +21,8 @@
               <!-- Right aligned nav items -->
               <b-navbar-nav class="ml-auto">
                 <b-navbar-nav>
-                  <b-nav-item to="/dataentry">Data Entry</b-nav-item>
+                  <b-nav-item to="/">Data Entry</b-nav-item>
+                  <b-nav-item to="/segmentr">Segment</b-nav-item>
                   <b-nav-item to="/fileupload">File Upload</b-nav-item>
                   <b-nav-item to="/signup">Register Account</b-nav-item>
                 </b-navbar-nav>

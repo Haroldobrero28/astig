@@ -1,11 +1,7 @@
 <template>
-
-
-
 <div>
-	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <Navbar /> 
-
   <div class="about">
     <div class="container-fluid">
 			<div class="row bg-dark">
@@ -26,13 +22,7 @@
 					&nbsp;&nbsp;<b-button class="btn btn-info float-right" @click.prevent="AddRoutes()" v-b-modal.modal-prevent-closing><i class="fas fa-route"></i>&nbsp;&nbsp;Add Routes</b-button>&nbsp;&nbsp;
 					<a href="/segmentr" style="text-decoration:none; text-color:white;"><button class="btn btn-info float-right"><i class="fas fa-globe"></i>&nbsp;&nbsp;View Segments</button></a>
 
-    <div class="mt-3">
-    
-      <div v-if="submittedNames.length === 0"></div>
-      <ul v-else class="mb-0 pl-3">
-        <li v-for="name in submittedNames" class="list-group-item" v-bind:key="name">{{ name }}</li>
-      </ul>
-    </div>
+  
 
     <b-modal
       id="modal-prevent-closing"
@@ -41,28 +31,31 @@
       @show="resetModal"
       @hidden="resetModal"
       @ok="handleOk"
+      
     >
-      <form ref="form" @submit.stop.prevent="handleSubmit">
-      <div>
-  <b-dropdown
-    text="Route Type"
-    block
-    variant="primary"
-    class="m-2"
-    menu-class="w-100"
-  >
-    <b-dropdown-item href="#">RSSO to CO</b-dropdown-item>
-    <b-dropdown-item href="#">RSSO to Other RSSO</b-dropdown-item>
-    <b-dropdown-item href="#">RSSO to PSO of the same Region</b-dropdown-item>
-    <b-dropdown-item href="#">RSSO to Provincial LGU Offices of the same Region</b-dropdown-item>
-    <b-dropdown-item href="#"> PSO to CO</b-dropdown-item>
-    <b-dropdown-item href="#">PSO to PSO of the same Region</b-dropdown-item>
-    <b-dropdown-item href="#">PSO to City/Municipal Hall of the same Province</b-dropdown-item>
-    <b-dropdown-item href="#">City/Municial Hall to Other City/Municipal Hall of the same Province</b-dropdown-item>
-    <b-dropdown-item href="#">City/Municipal Hall to Barangay Hall</b-dropdown-item>
-    <b-dropdown-item href="#">Barangay Hall to Other Barangay Hall of the same Province</b-dropdown-item>
-  </b-dropdown>
-</div>
+    
+    
+      <form @submit.prevent="addroute()"
+      ref="form" @submit.stop.prevent="handleSubmit"
+          class=""
+          action="/addroute"
+          method="post">
+         <div>
+          <label>Route Type</label>
+    <b-form-select v-model="routType" :options="options" class="mb-3" >
+      <!-- This slot appears above the options from 'options' prop -->
+      <template #first>
+        <b-form-select-option :value="null" text="Road Type"></b-form-select-option>
+      </template>
+
+      <!-- These options will appear after the ones from 'options' prop -->
+      <b-form-select-option value="RSSO to CO">RSSO to CO</b-form-select-option>
+      <b-form-select-option value="RSSO to Other RSSO">RSSO to Other RSSO</b-form-select-option>
+      <b-form-select-option value="RSSO to Other RSSO">RSSO to PSO of the same Region</b-form-select-option>
+    </b-form-select>
+
+    
+  </div>
         <b-form-group
           label="Origin"
           label-for="name-input"
@@ -77,7 +70,7 @@
           ></b-form-input>
         </b-form-group>
 		<b-form-group
-          label="DESTINATION"
+          label="Destination"
           label-for="destination-input"
           invalid-feedback="Destination is required"
           :state="destinationState"
@@ -90,112 +83,105 @@
           ></b-form-input>
         </b-form-group>
 
-        <div>
-  <b-dropdown
-    text="Distance (KM)"
-    block
-    variant="primary"
-    class="m-2"
-    menu-class="w-100"
-  >
-    <b-dropdown-item href="#">1</b-dropdown-item>
-    <b-dropdown-item href="#">2</b-dropdown-item>
-    <b-dropdown-item href="#">3</b-dropdown-item>
-    <b-dropdown-item href="#"> 4</b-dropdown-item>
-    <b-dropdown-item href="#"> 5</b-dropdown-item>
-    <b-dropdown-item href="#"> 6</b-dropdown-item>
-    <b-dropdown-item href="#"> 7</b-dropdown-item>
-    <b-dropdown-item href="#"> 8</b-dropdown-item>
-    <b-dropdown-item href="#"> 9</b-dropdown-item>
-    <b-dropdown-item href="#"> 10</b-dropdown-item>
-  </b-dropdown>
-</div>
+       <div>
+    <b-container fluid>
+    <b-row  v-for="type in types" :key="type">
+      <b-col sm="9">
+        <label :for="`type-${type}`">Distance (KM)</label>
+      </b-col>
+      <b-col sm="9">
+        <b-form-input :id="`type-${type}`" :type="type" v-model="distance"></b-form-input>
+      </b-col>
+    </b-row>
+  </b-container>
+
+    
+  </div>
 		
 	
-		<div>
-  <b-dropdown
-    text="Road Type"
-    block
-    variant="primary"
-    class="m-2"
-    menu-class="w-100"
-  >
-    <b-dropdown-item href="#">Not applicable</b-dropdown-item>
-    <b-dropdown-item href="#">National road</b-dropdown-item>
-    <b-dropdown-item href="#">Provincial road</b-dropdown-item>
-    <b-dropdown-item href="#"> City/Municipal road</b-dropdown-item>
-    <b-dropdown-item href="#"> Barangay road</b-dropdown-item>
-    <b-dropdown-item href="#"> Trail</b-dropdown-item>
-  </b-dropdown>
-</div>
+	<div>
+          <label>Road Type</label>
+    <b-form-select v-model="roadType" :options="options" class="mb-3" >
+      <!-- This slot appears above the options from 'options' prop -->
+      <template #first>
+        <b-form-select-option :value="null" text="Road Type"></b-form-select-option>
+      </template>
+
+      <!-- These options will appear after the ones from 'options' prop -->
+      <b-form-select-option value="National road">National road</b-form-select-option>
+      <b-form-select-option value="Provincial road">Provincial road</b-form-select-option>
+      <b-form-select-option value="City/Municipal road">City/Municipal road</b-form-select-option>
+    </b-form-select>
+
+    
+  </div>
 <div>
-  <b-dropdown
-    text="Topographical Features"
-    block
-    variant="primary"
-    class="m-2"
-    menu-class="w-100"
-  >
-    <b-dropdown-item href="#">Not applicable</b-dropdown-item>
-    <b-dropdown-item href="#">Plain</b-dropdown-item>
-    <b-dropdown-item href="#">Terrain</b-dropdown-item>
-    <b-dropdown-item href="#">Mountainous</b-dropdown-item>
-    <b-dropdown-item href="#">Hill</b-dropdown-item>
-    <b-dropdown-item href="#">River</b-dropdown-item>
-    <b-dropdown-item href="#">Lake</b-dropdown-item>
-    <b-dropdown-item href="#"> Sea/ocean</b-dropdown-item>
-    <b-dropdown-item href="#">Valley</b-dropdown-item>
-  </b-dropdown>
-</div>
-<div>
-  <b-dropdown
-    text="Mode of Travel"
-    block
-    variant="primary"
-    class="m-2"
-    menu-class="w-100"
-  >
-    <b-dropdown-item href="#">Airplane</b-dropdown-item>
-    <b-dropdown-item href="#">Bus</b-dropdown-item>
-    <b-dropdown-item href="#">Jeep</b-dropdown-item>
-    <b-dropdown-item href="#">Van</b-dropdown-item>
-    <b-dropdown-item href="#">Tricycle</b-dropdown-item>
-    <b-dropdown-item href="#">Habal-habal</b-dropdown-item>
-    <b-dropdown-item href="#">Horse</b-dropdown-item>
-    <b-dropdown-item href="#">Pump boat</b-dropdown-item>
-    <b-dropdown-item href="#"> Fast craft</b-dropdown-item>
-    <b-dropdown-item href="#">Roro</b-dropdown-item>
-    <b-dropdown-item href="#">PNR</b-dropdown-item>
-    <b-dropdown-item href="#">MRT/LRT</b-dropdown-item>
-    <b-dropdown-item href="#">Walk</b-dropdown-item>
-  </b-dropdown>
-</div>
-		<b-form-group
-          label="Duration of Travel (Minutes)"
-          label-for="distanceKM-input"
-          invalid-feedback="Distance KM is required"
-          :state="distanceKMState"
-        >
-          <b-form-input
-            id="distanceKM-input"
-            v-model="distanceKM"
-            :state="distanceKMState"
-            required
-          ></b-form-input>
-        </b-form-group>
-		<b-form-group
+          <label>Topographical Features</label>
+    <b-form-select v-model="topoFeatures" :options="options" class="mb-3" >
+      <!-- This slot appears above the options from 'options' prop -->
+      <template #first>
+        <b-form-select-option :value="null" text=""></b-form-select-option>
+      </template>
+
+      <!-- These options will appear after the ones from 'options' prop -->
+      <b-form-select-option value="RPlain">Plain</b-form-select-option>
+      <b-form-select-option value="Terrain">Terrain</b-form-select-option>
+      <b-form-select-option value="Mountainous">Mountainous</b-form-select-option>
+    </b-form-select>
+
+    
+  </div>
+
+  <div>
+          <label>Mode of Travel</label>
+    <b-form-select v-model="modeTravel" :options="options" class="mb-3" >
+      <!-- This slot appears above the options from 'options' prop -->
+      <template #first>
+        <b-form-select-option :value="null" text=""></b-form-select-option>
+      </template>
+
+      <!-- These options will appear after the ones from 'options' prop -->
+      <b-form-select-option value="Airplane">Airplane</b-form-select-option>
+      <b-form-select-option value="Bus">Bus</b-form-select-option>
+      <b-form-select-option value="Jeep">Jeep</b-form-select-option>
+    </b-form-select>
+
+    <div>
+     <div>
+    <b-container fluid>
+    <b-row  v-for="type in types" :key="type">
+      <b-col sm="9">
+        <label :for="`type-${type}`">Duration of Travel (Mins)</label>
+      </b-col>
+      <b-col sm="9">
+        <b-form-input :id="`type-${type}`" :type="type" v-model="durationTravel"></b-form-input>
+      </b-col>
+    </b-row>
+  </b-container>
+  </div>
+    </div>
+
+    <div>
+    
+    <b-form-group
           label="Frequency of Trips (in a day/week)"
-          label-for="roadType-input"
-          invalid-feedback="Road Type is required"
-          :state="roadTypeState"
+          label-for="name-input"
+          invalid-feedback="Origin is required"
+          :state="originState"
         >
           <b-form-input
-            id="roadType-input"
-            v-model="roadType"
-            :state="roadTypeState"
+            id="name-input"
+            v-model="tripFrequency"
+            :state="originState"
             required
           ></b-form-input>
         </b-form-group>
+    </div>
+
+  </div>
+
+	
+		
 		<b-form-group
           label="Fare (one way)"
           label-for="topographical-input"
@@ -204,109 +190,21 @@
         >
           <b-form-input
             id="topographical-input"
-            v-model="name"
+            v-model="fare"
             :state="topographicalState"
             required
           ></b-form-input>
         </b-form-group>
-		<b-form-group
-          label="MODE OF TRAVEL"
-          label-for="modeTravel-input"
-          invalid-feedback="Mode of Travel is required"
-          :state="modeTravelState"
-        >
-          <b-form-input
-            id="modeTravel-input"
-            v-model="modeTravel"
-            :state="modeTravelState"
-            required
-          ></b-form-input>
-        </b-form-group>
-		<b-form-group
-          label="DURATION TRAVEL (MINS)"
-          label-for="durationTravel-input"
-          invalid-feedback="Duration of Travel is required"
-          :state="durationTravelState"
-        >
-          <b-form-input
-            id="durationTravel-input"
-            v-model="durationTravel"
-            :state="durationTravelState"
-            required
-          ></b-form-input>
-        </b-form-group>
-		<b-form-group
-          label="FREQUENCY OF TRIPS (IN A DAY/WEEK)"
-          label-for="freqTrip-input"
-          invalid-feedback="Frequency of Trips is required"
-          :state="freqTripState"
-        >
-          <b-form-input
-            id="freqTrip-input"
-            v-model="freqTrip"
-            :state="freqTripState"
-            required
-          ></b-form-input>
-        </b-form-group>
-		<b-form-group
-          label="FARE (ONE WAY)"
-          label-for="fare-input"
-          invalid-feedback="Fare is required"
-          :state="fareState"
-        >
-          <b-form-input
-            id="fare-input"
-            v-model="fare"
-            :state="fareState"
-            required
-          ></b-form-input>
-        </b-form-group>
+		
+		
+		
+		
 
         <div>
-  <b-dropdown
-    text="Region"
-    block
-    variant="primary"
-    class="m-2"
-    menu-class="w-100"
-  >
-    <b-dropdown-item href="#">BARMM</b-dropdown-item>
-    <b-dropdown-item href="#">ARMM</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-    <b-dropdown-item href="#"> Region</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-    <b-dropdown-item href="#">Region</b-dropdown-item>
-  </b-dropdown>
+  
 </div>
 <div>
-  <b-dropdown
-    text="Province"
-    block
-    variant="primary"
-    class="m-2"
-    menu-class="w-100"
-  >
-    <b-dropdown-item href="#">Tawi Tawi</b-dropdown-item>
-    <b-dropdown-item href="#">COTABATO CITY</b-dropdown-item>
-    <b-dropdown-item href="#">ZAMBOANGA CITY</b-dropdown-item>
-    <b-dropdown-item href="#">BONGAO</b-dropdown-item>
-    <b-dropdown-item href="#">PUERTO PRINCESA CITY</b-dropdown-item>
-    <b-dropdown-item href="#">CITY OF ISABELA</b-dropdown-item>
-    <b-dropdown-item href="#">BASILAN</b-dropdown-item>
-    <b-dropdown-item href="#">LANAO DEL SUR</b-dropdown-item>
-    <b-dropdown-item href="#">ISABELA CITY</b-dropdown-item>
-    <b-dropdown-item href="#">Province</b-dropdown-item>
-    <b-dropdown-item href="#">Province</b-dropdown-item>
-    <b-dropdown-item href="#">Province</b-dropdown-item>
-    <b-dropdown-item href="#">Province</b-dropdown-item>
-  </b-dropdown>
+  
 </div>
 		<b-form-group
           label="Remarks"
@@ -316,11 +214,12 @@
         >
           <b-form-input
             id="travelIDnumber-input"
-            v-model="travelIDnumber"
+            v-model="remarks"
             :state="travelIDnumberState"
             required
           ></b-form-input>
         </b-form-group>
+     
 		
       </form>
     </b-modal>
@@ -356,16 +255,27 @@
 			<tbody>
 				<tr class="text-center">
 					<td>1</td>
-					<td>City Hall</td>
-					<td>Bongao</td>
+					<td>
+    
+     <div class="">Bongao
+      
+      
+      
+    </div>
+    </td>
+					<td>
+    
+      City Hall
+      
+         </td>
 					<td>
           <div class="col-lg-12">
-          <a href="#" class="text-success" @click="showEditModal=true"><i class="fas fa-eye"></i></a>
-          &nbsp;&nbsp;|||||
           
-          <a href="#" class="text-success" @click="showEditModal=true"><i class="fas fa-edit"></i></a>
-          &nbsp;|||||
-          <a href="#" class="text-danger" @click="showDeleteModal=true"><i class="fas fa-trash-alt"></i></a>
+          <span class="icon_crud"><a href="#" class="text-success icon_crud" @click="showEditModal=true"><i class="fas fa-eye"></i></a></span>
+         
+          <span class="icon_crud"> <a href="#" class="text-success icon_crud" @click="showEditModal=true"><i class="fas fa-edit"></i></a></span>
+          <span class="icon_crud"><a href="#" class="text-danger icon_crud" @click="showDeleteModal=true"><i class="fas fa-trash-alt"></i></a></span>
+          
           </div>
 
           </td>
@@ -379,15 +289,16 @@
 </div>
 		</div>
   </div>
-</div> 
+  </div>
+ 
 </template>
 
 <script>
 
-import Navbar from './layout/Navbar'
+import Navbar from './cmps/Navbar'
 
 export default {
-    name: 'DataEntry',
+    
     components: {
         Navbar
     },
@@ -395,9 +306,16 @@ export default {
       return {
         name: '',
         nameState: null,
-        submittedNames: []
+        submittedNames: [],
+        types: [
+          
+          'number'
+          
+        ]
+        
       }
     },
+
     methods: {
       checkFormValidity() {
         const valid = this.$refs.form.checkValidity()
@@ -420,7 +338,6 @@ export default {
           return
         }
         // Push the name to submitted names
-        
         this.submittedNames.push(this.name)
         // Hide the modal manually
         this.$nextTick(() => {
@@ -441,4 +358,12 @@ export default {
 		background: rgba(0, 0, 0, 0.6);
 
 	}
+
+  .about {
+    margin-top: 50px;
+  }
+
+  .icon_crud{
+   margin: 0px, 5px, 0px, 5px;
+  }
 </style>

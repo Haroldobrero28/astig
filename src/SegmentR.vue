@@ -243,7 +243,7 @@
 <script>
 import Navbar from "./cmps/Navbar";
 export default {
-  name: "SegmentR",
+  
   components: {
     Navbar,
   },
